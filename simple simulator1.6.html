@@ -378,6 +378,7 @@
           "Authorize",
           { idTag: $("#TAG").val() },
         ]);
+        console.log('Authorize: ', Auth);
         _websocket.send(Auth);
       }
 
@@ -399,6 +400,7 @@
             reservationId: 0,
           },
         ]);
+        console.log('startTransaction: ', strtT);
         _websocket.send(strtT);
       }
 
@@ -422,6 +424,7 @@
             meterStop: 100,
           },
         ]);
+        console.log('stopTransaction: ', stpT);
         _websocket.send(stpT);
       }
 
@@ -462,7 +465,7 @@
         ]);
 
         logMsg("ws connected");
-
+        console.log('BootNotification: ', BN);
         _websocket.send(BN);
       }
 
@@ -521,7 +524,7 @@
             },
           ]);
 
-          console.log(2, MV);
+          console.log('metervalue: ', MV);
           _websocket.send(MV);
         });
         $("#mvp").click(function () {
@@ -570,7 +573,6 @@
 
         $("#status").click(function () {
           sessionStorage.setItem("LastAction", "StatusNotification");
-          console.log("sss", $("#ConnectorStatus").val());
           var SN = JSON.stringify([
             parseInt($("#CUID").val()),
             id,
@@ -585,6 +587,7 @@
               vendorErrorCode: "",
             },
           ]);
+          console.log('StatusNotifications: ', SN);
           _websocket.send(SN);
         });
 
@@ -600,6 +603,7 @@
               data: "",
             },
           ]);
+          console.log('DataTransfer: ', DT);
           _websocket.send(DT);
         });
 
